@@ -27,7 +27,7 @@ export async function readMany(req: Request, res: Response) {
     try {
         const posts = await Post.find().exec();
 
-        res.json({ posts });
+        res.json({ data: posts });
 
     } catch (error) {
         handleErrorReponse(res, error);

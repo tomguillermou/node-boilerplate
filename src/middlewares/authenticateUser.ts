@@ -21,7 +21,7 @@ export default async function authenticateUser(req: Request, res: Response, next
         const bearerToken = authorizationHeader.split(" ")[1];
 
         // The encoded token corresponds to the user id trying to log in
-        const decodedToken = jwt.verify(bearerToken, JWT_SECRET as string);
+        const decodedToken = jwt.verify(bearerToken, JWT_SECRET);
 
         // Check if decoded token is not a valid ObjectId
         if (typeof decodedToken !== "string" || !decodedToken.match(/^[0-9a-fA-F]{24}$/)) {

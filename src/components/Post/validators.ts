@@ -6,6 +6,7 @@ export function createOne(req: Request, res: Response, next: NextFunction) {
 
     try {
         // Nothing to validate
+
         next();
 
     } catch (error) {
@@ -17,6 +18,7 @@ export function readMany(req: Request, res: Response, next: NextFunction) {
 
     try {
         // Nothing to validate
+
         next();
 
     } catch (error) {
