@@ -9,6 +9,7 @@ import { MONGODB_URI, MONGODB_DATABASE } from "./utils/secrets";
 import authRouter from "./components/Auth/routes";
 import userRouter from "./components/User/routes";
 import postRouter from "./components/Post/routes";
+import approbationRouter from "./components/Approbation/routes";
 
 const app = express();
 
@@ -33,5 +34,6 @@ app.use(bodyParser.json());
 app.use(authRouter);
 app.use(userRouter);
 app.use(postRouter);
+app.use(approbationRouter);
 
 export default app;

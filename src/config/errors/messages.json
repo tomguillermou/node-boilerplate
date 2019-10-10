@@ -18,8 +18,10 @@
     },
     "invalidCredentials": "Invalid credentials",
     "userDoesNotExist": "This user does not exist",
+    "postDoesNotExist": "This post does not exist",
     "missingAuthorizationHeader": "Missing bearer token in authorization header",
     "invalidBearerToken": "Invalid bearer token",
     "authenticationFailed": "Authentication failed",
-    "invalidObjectIdFormat": "Invalid ObjectId format"
+    "invalidObjectIdFormat": "Invalid ObjectId format",
+    "userAlreadyApproved": "User has already given an approbation for this post"
 }

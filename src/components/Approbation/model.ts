@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
 
-const modelName = "Post";
+const modelName = "Approbation";
 
 type PostDocument = mongoose.Document & {
     owner: string;
     content: string;
-    approbations: any;
+    likes: number;
+    dislikes: number;
 };
 
 const attributes = {
@@ -14,11 +15,15 @@ const attributes = {
         type: mongoose.SchemaTypes.ObjectId,
         ref: "User"
     },
-    content: {
+    post: {
         required: true,
-        type: String
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "Post"
     },
-    approbations: [{ type: mongoose.SchemaTypes.ObjectId, ref: "Approbation" }]
+    approves: {
+        required: true,
+        type: Boolean
+    }
 };
 
 const options = {
