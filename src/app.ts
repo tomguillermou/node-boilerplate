@@ -8,6 +8,7 @@ import { MONGODB_URI, MONGODB_DATABASE } from "./utils/secrets";
 
 import authRouter from "./components/Auth/routes";
 import userRouter from "./components/User/routes";
+import postRouter from "./components/Post/routes";
 
 const app = express();
 
@@ -31,5 +32,6 @@ app.use(bodyParser.json());
 // Bind routers
 app.use(authRouter);
 app.use(userRouter);
+app.use(postRouter);
 
 export default app;
