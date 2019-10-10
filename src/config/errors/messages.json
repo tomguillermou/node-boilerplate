@@ -18,7 +18,7 @@
     },
     "invalidCredentials": "Invalid credentials",
     "userDoesNotExist": "This user does not exist",
-    "missingAuthorizationHeader": "Missing authorization header with bearer token",
+    "missingAuthorizationHeader": "Missing bearer token in authorization header",
     "invalidBearerToken": "Invalid bearer token",
     "authenticationFailed": "Authentication failed",
     "invalidObjectIdFormat": "Invalid ObjectId format"
