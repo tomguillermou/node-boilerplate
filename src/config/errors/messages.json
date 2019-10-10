@@ -1,0 +1,24 @@
+{
+  "missingEnvironmentVariable": {
+    "ENVIRONMENT": "Missing environment variable 'ENVIRONMENT'",
+    "PORT": "Missing environment variable 'PORT'",
+    "MONGODB_URI": "Missing environment variable 'MONGODB_URI'",
+    "MONGODB_DATABASE": "Missing environment variable 'MONGODB_DATABASE'",
+    "JWT_SECRET": "Missing environment variable 'JWT_SECRET'"
+  },
+  "passwordValidation": {
+    "tooShort": "Password must have at least 8 characters",
+    "missingDigit": "Password must have at least 1 digit",
+    "missingLowercaseLetter": "Password must have at least 1 lowercase letter",
+    "missingUppercaseLetter": "Password must have at least 1 uppercase letter"
+  },
+  "emailValidation": {
+    "invalidFormat": "Email address must follow format 'jsmith@example.com'"
+  },
+  "invalidCredentials": "Invalid credentials",
+  "userDoesNotExist": "This user does not exist",
+  "missingAuthorizationHeader": "Missing authorization header with bearer token",
+  "invalidBearerToken": "Invalid bearer token",
+  "authenticationFailed": "Authentication failed",
+  "invalidObjectIdFormat": "Invalid ObjectId format"
+}

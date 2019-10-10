@@ -1,2 +1,3 @@
-# nodein-backend
- Backend for NodeIn
+# NodeIn backend
+
+This is the backend of NodeIn
