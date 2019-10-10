@@ -3,7 +3,6 @@ import { Request, Response } from "express";
 import Post from "./model";
 
 import { handleErrorReponse } from "../../core/errors";
-import errorMessage from "../../config/errors/messages.json";
 
 export async function createOne(req: Request, res: Response) {
 
