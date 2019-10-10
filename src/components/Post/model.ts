@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+const modelName = "Post";
+
 type PostDocument = mongoose.Document & {
     owner: string;
     content: string;
@@ -10,7 +12,8 @@ type PostDocument = mongoose.Document & {
 const attributes = {
     owner: {
         required: true,
-        type: mongoose.SchemaTypes.ObjectId
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "User"
     },
     content: {
         required: true,
@@ -34,6 +37,6 @@ const options = {
 
 const schema = new mongoose.Schema(attributes, options);
 
-const model = mongoose.model<PostDocument>("Post", schema);
+const model = mongoose.model<PostDocument>(modelName, schema);
 
 export default model;

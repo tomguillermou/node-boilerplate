@@ -1,6 +1,8 @@
 import bcrypt from "bcrypt";
 import mongoose from "mongoose";
 
+const modelName = "User";
+
 type UserDocument = mongoose.Document & {
     email: string;
     password: string;
@@ -51,6 +53,6 @@ UserSchema.pre<UserDocument>("save", function (next: mongoose.HookNextFunction) 
     next();
 });
 
-const UserModel = mongoose.model<UserDocument>("User", UserSchema);
+const UserModel = mongoose.model<UserDocument>(modelName, UserSchema);
 
 export default UserModel;
