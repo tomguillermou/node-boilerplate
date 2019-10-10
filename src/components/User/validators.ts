@@ -44,7 +44,6 @@ export function updateOne(req: Request, res: Response, next: NextFunction) {
 export function deleteOne(req: Request, res: Response, next: NextFunction) {
 
     try {
-
         // Nothing to validate
 
         next();
