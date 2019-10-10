@@ -7,9 +7,11 @@ import * as userValidator from "./validators";
 
 import * as userController from "./controller";
 
-router.get("/users", authenticateUser, userValidator.readMany, userController.readMany);
-router.get("/users/:username", authenticateUser, userValidator.readOne, userController.readOne);
-router.patch("/users/:username", authenticateUser, userValidator.updateOne, userController.updateOne);
-router.delete("/users/:username", authenticateUser, userValidator.deleteOne, userController.deleteOne);
+router.use(authenticateUser);
+
+router.get("/users", userValidator.readMany, userController.readMany);
+router.get("/users/:username", userValidator.readOne, userController.readOne);
+router.patch("/users/:username", userValidator.updateOne, userController.updateOne);
+router.delete("/users/:username", userValidator.deleteOne, userController.deleteOne);
 
 export default router;
