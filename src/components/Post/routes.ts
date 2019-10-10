@@ -11,6 +11,5 @@ router.use(authenticateUser);
 
 router.post("/posts", validators.createOne, controller.createOne);
 router.get("/posts", validators.readMany, controller.readMany);
-// router.delete("/posts/:id", validators.deleteOne, controller.deleteOne);
 
 export default router;
