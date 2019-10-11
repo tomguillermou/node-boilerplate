@@ -5,7 +5,7 @@ const modelName = "Post";
 type PostDocument = mongoose.Document & {
     owner: string;
     content: string;
-    approbations: any;
+    votes: any;
 };
 
 const attributes = {
@@ -18,7 +18,7 @@ const attributes = {
         required: true,
         type: String
     },
-    approbations: [{ type: mongoose.SchemaTypes.ObjectId, ref: "Approbation" }]
+    votes: [{ type: mongoose.SchemaTypes.ObjectId, ref: "Vote" }]
 };
 
 const options = {

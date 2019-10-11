@@ -24,10 +24,7 @@ export async function createOne(req: Request, res: Response) {
 export async function readMany(req: Request, res: Response) {
 
     try {
-        const posts = await Post.find()
-            .populate("owner")
-            .populate("approbations")
-            .exec();
+        const posts = await Post.find().exec();
 
         res.json({ data: posts });
 

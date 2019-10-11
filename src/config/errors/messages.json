@@ -23,5 +23,5 @@
     "invalidBearerToken": "Invalid bearer token",
     "authenticationFailed": "Authentication failed",
     "invalidObjectIdFormat": "Invalid ObjectId format",
-    "userAlreadyApproved": "User has already given an approbation for this post"
+    "userAlreadyVoted": "User has already voted for this post"
 }

@@ -9,6 +9,6 @@ import * as userController from "./controller";
 
 router.use(authenticateUser);
 
-router.post("/approbations", userValidator.createOne, userController.createOne);
+router.post("/votes", userValidator.createOne, userController.createOne);
 
 export default router;

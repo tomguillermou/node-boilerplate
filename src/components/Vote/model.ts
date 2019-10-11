@@ -1,12 +1,11 @@
 import mongoose from "mongoose";
 
-const modelName = "Approbation";
+const modelName = "Vote";
 
-type PostDocument = mongoose.Document & {
+type VoteDocument = mongoose.Document & {
     owner: string;
-    content: string;
-    likes: number;
-    dislikes: number;
+    post: string;
+    action: string;
 };
 
 const attributes = {
@@ -20,9 +19,10 @@ const attributes = {
         type: mongoose.SchemaTypes.ObjectId,
         ref: "Post"
     },
-    approves: {
+    action: {
         required: true,
-        type: Boolean
+        type: String,
+        enum: ["upvote", "downvote"]
     }
 };
 
@@ -32,6 +32,6 @@ const options = {
 
 const schema = new mongoose.Schema(attributes, options);
 
-const model = mongoose.model<PostDocument>(modelName, schema);
+const model = mongoose.model<VoteDocument>(modelName, schema);
 
 export default model;
