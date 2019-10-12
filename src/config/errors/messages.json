@@ -16,6 +16,9 @@
         "invalidFormat": "Email address must follow format 'jsmith@example.com'",
         "invalidDomain": "Email domain must be nodein.com"
     },
+    "objectIdValidation": {
+        "invalidFormat": "Invalid ObjectId format"
+    },
     "invalidCredentials": "Invalid credentials",
     "userDoesNotExist": "This user does not exist",
     "postDoesNotExist": "This post does not exist",

@@ -1,12 +1,11 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 
-import User from "../components/User/model";
-
+import { JWT_SECRET } from "../utils/secrets";
 import { handleErrorReponse } from "../core/errors";
 import errorMessage from "../config/errors/messages.json";
 
-import { JWT_SECRET } from "../utils/secrets";
+import User from "../components/User/model";
 
 export default async function authenticateUser(req: Request, res: Response, next: NextFunction) {
 

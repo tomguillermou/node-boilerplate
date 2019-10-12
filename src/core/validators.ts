@@ -31,3 +31,10 @@ export function validatePassword(password: string) {
         throw new Error(errorMessage.passwordValidation.missingUppercaseLetter);
     }
 }
+
+export function validateObjectId(objectId: string) {
+
+    if (typeof objectId !== "string" || !objectId.match(/^[0-9a-fA-F]{24}$/)) {
+        throw new Error(errorMessage.objectIdValidation.invalidFormat);
+    }
+}
