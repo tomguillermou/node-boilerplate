@@ -10,6 +10,7 @@ import authRouter from "./components/Auth/routes";
 import userRouter from "./components/User/routes";
 import postRouter from "./components/Post/routes";
 import voteRouter from "./components/Vote/routes";
+import messageRouter from "./components/Message/routes";
 
 const app = express();
 
@@ -35,5 +36,6 @@ app.use(authRouter);
 app.use(userRouter);
 app.use(postRouter);
 app.use(voteRouter);
+app.use(messageRouter);
 
 export default app;
