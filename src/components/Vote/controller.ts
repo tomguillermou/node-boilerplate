@@ -9,11 +9,12 @@ import errorMessage from "../../config/errors/messages.json";
 export async function createOne(req: Request, res: Response) {
 
     try {
-        const owner = req.authUser;
-
-        const post = await Post.findById(req.body.post).exec();
-
+        const ownerId = req.authUser._id;
+        const postId = req.body.postId;
         const action = req.body.action;
+
+        // Check if the post exists
+        const post = await Post.findById(postId).exec();
 
         if (post === null) {
             throw new Error(errorMessage.postDoesNotExist);
@@ -21,8 +22,8 @@ export async function createOne(req: Request, res: Response) {
 
         // Check if the post does not already have a vote from the user
         const userVote = await Vote.findOne()
-            .where("owner").equals(owner)
-            .where("post").equals(post)
+            .where("owner").equals(ownerId)
+            .where("post").equals(postId)
             .exec();
 
         if (userVote !== null) {
@@ -30,7 +31,11 @@ export async function createOne(req: Request, res: Response) {
         }
 
         // Create a vote for the specified post
-        const newVote = new Vote({ owner, post, action });
+        const newVote = new Vote({
+            owner: ownerId,
+            post: postId,
+            action
+        });
 
         await newVote.save();
 
