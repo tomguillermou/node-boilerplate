@@ -9,10 +9,11 @@ import errorMessage from "../../config/errors/messages.json";
 export async function createOne(req: Request, res: Response) {
 
     try {
-        const receiverEmail = req.body.to;
+        const receiverId = req.body.receiverId;
+        const content = req.body.content;
 
         // Check if receiver exists
-        const receiver = await User.findOne().where("email").equals(receiverEmail).exec();
+        const receiver = await User.findById(receiverId).exec();
 
         if (receiver === null) {
             throw new Error(errorMessage.userDoesNotExist);
@@ -20,8 +21,8 @@ export async function createOne(req: Request, res: Response) {
 
         const message = new Message({
             owner: req.authUser._id,
-            receiver: receiver._id,
-            content: req.body.content
+            receiver: receiverId,
+            content
         });
 
         await message.save();
@@ -36,7 +37,13 @@ export async function createOne(req: Request, res: Response) {
 export async function readMany(req: Request, res: Response) {
 
     try {
-        const messages = await Message.find().exec();
+        const ownerId = req.authUser._id;
+        const receiverId = req.query.receiverId;
+
+        const messages = await Message.find()
+            .where("owner").equals(ownerId)
+            .where("receiver").equals(receiverId)
+            .exec();
 
         res.json({ data: messages });
 

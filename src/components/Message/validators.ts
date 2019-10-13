@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 
 import { handleErrorReponse } from "../../core/errors";
+import { validateObjectId } from "../../core/validators";
 
 export function createOne(req: Request, res: Response, next: NextFunction) {
 
@@ -17,7 +18,7 @@ export function createOne(req: Request, res: Response, next: NextFunction) {
 export function readMany(req: Request, res: Response, next: NextFunction) {
 
     try {
-        // Nothing to validate
+        validateObjectId(req.query.receiverId);
 
         next();
 
