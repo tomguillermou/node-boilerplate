@@ -1,6 +1,7 @@
 import bodyParser from "body-parser";
 import express from "express";
 import helmet from "helmet";
+import { cors } from "cors";
 import morgan from "morgan";
 import mongoose from "mongoose";
 
@@ -28,6 +29,7 @@ async function connect() {
 connect();
 
 app.use(morgan("dev"));
+app.use(cors);
 app.use(helmet()); // Use Helmet to protect headers
 app.use(bodyParser.json());
 
