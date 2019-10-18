@@ -30,8 +30,11 @@ connect();
 
 app.use(morgan("dev"));
 app.use(helmet()); // Use Helmet to protect headers
-app.use(cors);
+app.use(cors());
 app.use(bodyParser.json());
+
+// Enabling CORS Pre-Flight
+app.options("*", cors()); // include before other routes
 
 // Bind routers
 app.use(authRouter);
