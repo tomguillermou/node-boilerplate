@@ -39,11 +39,6 @@ export async function createOne(req: Request, res: Response) {
 
         await newVote.save();
 
-        // Add the new vote to the post's votes list
-        post.votes.push(newVote);
-
-        await post.save();
-
         res.json({ create: 'done' });
 
     } catch (error) {

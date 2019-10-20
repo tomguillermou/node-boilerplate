@@ -6,7 +6,7 @@ import { validateObjectId } from '../../core/validators';
 export function createOne(req: Request, res: Response, next: NextFunction) {
 
     try {
-        validateObjectId(req.body.post);
+        validateObjectId(req.body.postId);
 
         next();
 

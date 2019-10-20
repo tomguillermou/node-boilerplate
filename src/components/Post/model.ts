@@ -5,7 +5,6 @@ const modelName = 'Post';
 type PostDocument = mongoose.Document & {
     owner: string;
     content: string;
-    votes: any;
 };
 
 const attributes = {
@@ -18,14 +17,39 @@ const attributes = {
         required: true,
         type: String,
     },
-    votes: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Vote' }],
 };
 
 const options = {
     timestamps: true,
+    toJSON: { virtuals: true },
 };
 
 const schema = new mongoose.Schema(attributes, options);
+
+schema.virtual('upvotesCount', {
+    ref: 'Vote',
+    localField: '_id',
+    foreignField: 'post',
+    count: true,
+    options: {
+        match: { type: 'upvote' },
+    },
+});
+
+schema.virtual('downvotesCount', {
+    ref: 'Vote',
+    localField: '_id',
+    foreignField: 'post',
+    count: true,
+    options: {
+        match: { type: 'downvote' },
+    },
+});
+
+schema.pre('find', function () {
+    this.populate('upvotesCount');
+    this.populate('downvotesCount');
+});
 
 const model = mongoose.model<PostDocument>(modelName, schema);
 
