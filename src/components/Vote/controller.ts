@@ -1,10 +1,10 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 
-import Vote from "./model";
-import Post from "../Post/model";
+import Vote from './model';
+import Post from '../Post/model';
 
-import { handleErrorReponse } from "../../core/errors";
-import errorMessage from "../../config/errors/messages.json";
+import { handleErrorReponse } from '../../core/errors';
+import errorMessage from '../../config/errors/messages.json';
 
 export async function createOne(req: Request, res: Response) {
 
@@ -22,8 +22,8 @@ export async function createOne(req: Request, res: Response) {
 
         // Check if the post does not already have a vote from the user
         const userVote = await Vote.findOne()
-            .where("owner").equals(ownerId)
-            .where("post").equals(postId)
+            .where('owner').equals(ownerId)
+            .where('post').equals(postId)
             .exec();
 
         if (userVote !== null) {
@@ -34,7 +34,7 @@ export async function createOne(req: Request, res: Response) {
         const newVote = new Vote({
             owner: ownerId,
             post: postId,
-            action
+            action,
         });
 
         await newVote.save();
@@ -44,7 +44,7 @@ export async function createOne(req: Request, res: Response) {
 
         await post.save();
 
-        res.json({ create: "done" });
+        res.json({ create: 'done' });
 
     } catch (error) {
         handleErrorReponse(res, error);
