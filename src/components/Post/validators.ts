@@ -1,6 +1,6 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, Response } from 'express';
 
-import { handleErrorReponse } from "../../core/errors";
+import { handleErrorReponse } from '../../core/errors';
 
 export function createOne(req: Request, res: Response, next: NextFunction) {
 

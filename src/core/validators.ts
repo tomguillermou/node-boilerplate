@@ -1,6 +1,6 @@
-import { isEmail, isLength, matches } from "validator";
+import { isEmail, isLength, matches } from 'validator';
 
-import errorMessage from "../config/errors/messages.json";
+import errorMessage from '../config/errors/messages.json';
 
 export function validateEmail(email: string) {
 
@@ -34,7 +34,7 @@ export function validatePassword(password: string) {
 
 export function validateObjectId(objectId: string) {
 
-    if (typeof objectId !== "string" || !objectId.match(/^[0-9a-fA-F]{24}$/)) {
+    if (typeof objectId !== 'string' || !objectId.match(/^[0-9a-fA-F]{24}$/)) {
         throw new Error(errorMessage.objectIdValidation.invalidFormat);
     }
 }

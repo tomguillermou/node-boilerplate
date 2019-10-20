@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
 
-import Vote from './model';
 import Post from '../Post/model';
+import Vote from './model';
 
-import { handleErrorReponse } from '../../core/errors';
 import errorMessage from '../../config/errors/messages.json';
+import { handleErrorReponse } from '../../core/errors';
 
 export async function createOne(req: Request, res: Response) {
 

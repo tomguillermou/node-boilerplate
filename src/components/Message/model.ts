@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const modelName = "Message";
+const modelName = 'Message';
 
 type MessageDocument = mongoose.Document & {
     owner: string;
@@ -12,21 +12,21 @@ const attributes = {
     owner: {
         required: true,
         type: mongoose.SchemaTypes.ObjectId,
-        ref: "User"
+        ref: 'User',
     },
     receiver: {
         required: true,
         type: mongoose.SchemaTypes.ObjectId,
-        ref: "User"
+        ref: 'User',
     },
     content: {
         required: true,
-        type: String
-    }
+        type: String,
+    },
 };
 
 const options = {
-    timestamps: true
+    timestamps: true,
 };
 
 const schema = new mongoose.Schema(attributes, options);

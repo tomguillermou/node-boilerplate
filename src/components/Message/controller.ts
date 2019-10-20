@@ -1,10 +1,10 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 
-import Message from "./model";
-import User from "../User/model";
+import User from '../User/model';
+import Message from './model';
 
-import { handleErrorReponse } from "../../core/errors";
-import errorMessage from "../../config/errors/messages.json";
+import errorMessage from '../../config/errors/messages.json';
+import { handleErrorReponse } from '../../core/errors';
 
 export async function createOne(req: Request, res: Response) {
 
@@ -22,12 +22,12 @@ export async function createOne(req: Request, res: Response) {
         const message = new Message({
             owner: req.authUser._id,
             receiver: receiverId,
-            content
+            content,
         });
 
         await message.save();
 
-        res.json({ create: "done" });
+        res.json({ create: 'done' });
 
     } catch (error) {
         handleErrorReponse(res, error);
@@ -41,8 +41,8 @@ export async function readMany(req: Request, res: Response) {
         const receiverId = req.query.receiverId;
 
         const messages = await Message.find()
-            .where("owner").equals(ownerId)
-            .where("receiver").equals(receiverId)
+            .where('owner').equals(ownerId)
+            .where('receiver').equals(receiverId)
             .exec();
 
         res.json({ data: messages });

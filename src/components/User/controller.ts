@@ -1,8 +1,8 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 
-import User from "./model";
+import User from './model';
 
-import { handleErrorReponse } from "../../core/errors";
+import { handleErrorReponse } from '../../core/errors';
 
 export async function readMany(req: Request, res: Response) {
 
@@ -12,15 +12,15 @@ export async function readMany(req: Request, res: Response) {
         const query = User.find();
 
         if (firstname) {
-            query.where("firstname").regex(firstname);
+            query.where('firstname').regex(firstname);
         }
 
         if (lastname) {
-            query.where("lastname").regex(lastname);
+            query.where('lastname').regex(lastname);
         }
 
         if (position) {
-            query.where("position").regex(position);
+            query.where('position').regex(position);
         }
 
         const users = await query.exec();

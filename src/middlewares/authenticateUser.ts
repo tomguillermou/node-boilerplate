@@ -1,29 +1,29 @@
-import { NextFunction, Request, Response } from "express";
-import jwt from "jsonwebtoken";
+import { NextFunction, Request, Response } from 'express';
+import jwt from 'jsonwebtoken';
 
-import { JWT_SECRET } from "../utils/secrets";
-import { handleErrorReponse } from "../core/errors";
-import errorMessage from "../config/errors/messages.json";
+import errorMessage from '../config/errors/messages.json';
+import { handleErrorReponse } from '../core/errors';
+import { JWT_SECRET } from '../utils/secrets';
 
-import User from "../components/User/model";
+import User from '../components/User/model';
 
 export default async function authenticateUser(req: Request, res: Response, next: NextFunction) {
 
     try {
-        const authorizationHeader = req.header("authorization");
+        const authorizationHeader = req.header('authorization');
 
         if (authorizationHeader === undefined) {
             throw new Error(errorMessage.missingAuthorizationHeader);
         }
 
         // Parse encoded bearer token from the authorization header
-        const bearerToken = authorizationHeader.split(" ")[1];
+        const bearerToken = authorizationHeader.split(' ')[1];
 
         // The encoded token corresponds to the user id trying to log in
         const decodedToken = jwt.verify(bearerToken, JWT_SECRET);
 
         // Check if decoded token is not a valid ObjectId
-        if (typeof decodedToken !== "string" || !decodedToken.match(/^[0-9a-fA-F]{24}$/)) {
+        if (typeof decodedToken !== 'string' || !decodedToken.match(/^[0-9a-fA-F]{24}$/)) {
             throw new Error(errorMessage.invalidBearerToken);
         }
 

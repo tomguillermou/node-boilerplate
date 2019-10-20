@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const modelName = "Post";
+const modelName = 'Post';
 
 type PostDocument = mongoose.Document & {
     owner: string;
@@ -12,17 +12,17 @@ const attributes = {
     owner: {
         required: true,
         type: mongoose.SchemaTypes.ObjectId,
-        ref: "User"
+        ref: 'User',
     },
     content: {
         required: true,
-        type: String
+        type: String,
     },
-    votes: [{ type: mongoose.SchemaTypes.ObjectId, ref: "Vote" }]
+    votes: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Vote' }],
 };
 
 const options = {
-    timestamps: true
+    timestamps: true,
 };
 
 const schema = new mongoose.Schema(attributes, options);

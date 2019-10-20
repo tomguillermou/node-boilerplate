@@ -1,7 +1,7 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, Response } from 'express';
 
-import { handleErrorReponse } from "../../core/errors";
-import { validateEmail, validatePassword } from "../../core/validators";
+import { handleErrorReponse } from '../../core/errors';
+import { validateEmail, validatePassword } from '../../core/validators';
 
 export function login(req: Request, res: Response, next: NextFunction) {
 
