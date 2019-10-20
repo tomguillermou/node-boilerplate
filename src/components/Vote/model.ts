@@ -5,7 +5,7 @@ const modelName = 'Vote';
 type VoteDocument = mongoose.Document & {
     owner: string;
     post: string;
-    action: string;
+    type: string;
 };
 
 const attributes = {
@@ -19,7 +19,7 @@ const attributes = {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Post',
     },
-    action: {
+    type: {
         required: true,
         type: String,
         enum: ['upvote', 'downvote'],

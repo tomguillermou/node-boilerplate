@@ -11,7 +11,7 @@ export async function createOne(req: Request, res: Response) {
     try {
         const ownerId = req.authUser._id;
         const postId = req.body.postId;
-        const action = req.body.action;
+        const type = req.body.type;
 
         // Check if the post exists
         const post = await Post.findById(postId).exec();
@@ -34,7 +34,7 @@ export async function createOne(req: Request, res: Response) {
         const newVote = new Vote({
             owner: ownerId,
             post: postId,
-            action,
+            type,
         });
 
         await newVote.save();
