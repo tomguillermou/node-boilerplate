@@ -47,6 +47,7 @@ schema.virtual('downvotesCount', {
 });
 
 schema.pre('find', function () {
+    this.populate('owner');
     this.populate('upvotesCount');
     this.populate('downvotesCount');
 });
