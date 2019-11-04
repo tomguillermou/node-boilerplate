@@ -22,7 +22,7 @@ export async function createOne(req: Request, res: Response) {
 export async function readMany(req: Request, res: Response) {
 
     try {
-        const posts = await Post.find().exec();
+        const posts = await Post.find().sort('-createdAt').exec();
 
         res.json({ data: posts });
 
