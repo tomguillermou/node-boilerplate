@@ -5,7 +5,7 @@ const modelName = 'Message';
 type MessageDocument = mongoose.Document & {
     owner: string;
     receiver: string;
-    content: any;
+    content: string;
 };
 
 const attributes = {

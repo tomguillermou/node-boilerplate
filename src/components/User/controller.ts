@@ -31,3 +31,29 @@ export async function readMany(req: Request, res: Response) {
         handleErrorReponse(res, error);
     }
 }
+
+export async function readOne(req: Request, res: Response) {
+
+    try {
+        const { id } = req.params;
+
+        const user = await User.findById(id).exec();
+
+        res.json({ user });
+
+    } catch (error) {
+        handleErrorReponse(res, error);
+    }
+}
+
+export async function fetchMe(req: Request, res: Response) {
+
+    try {
+        const user = await User.findById(req.authUser._id).exec();
+
+        res.json({ user });
+
+    } catch (error) {
+        handleErrorReponse(res, error);
+    }
+}

@@ -40,9 +40,11 @@ export async function readMany(req: Request, res: Response) {
         const ownerId = req.authUser._id;
         const receiverId = req.query.receiverId;
 
-        const messages = await Message.find()
-            .where('owner').equals(ownerId)
-            .where('receiver').equals(receiverId)
+        const messages = await Message.find().or([
+            { $and: [{ owner: ownerId }, { receiver: receiverId }] },
+            { $and: [{ owner: receiverId }, { receiver: ownerId }] },
+        ])
+            .sort('-createdAt')
             .exec();
 
         res.json({ data: messages });
