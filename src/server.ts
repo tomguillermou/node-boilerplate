@@ -1,7 +1,8 @@
-import http from "http";
-import app from "./app";
+import http from 'http';
 
-import { PORT } from "./utils/secrets";
+import app from './app';
+
+import { PORT } from './utils/secrets';
 
 /**
  * Create HTTP server.

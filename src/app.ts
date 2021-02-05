@@ -1,46 +1,27 @@
-import bodyParser from "body-parser";
-import express from "express";
-import helmet from "helmet";
-import cors from "cors";
-import morgan from "morgan";
-import mongoose from "mongoose";
+import bodyParser from 'body-parser';
+import express from 'express';
+import helmet from 'helmet';
+import cors from 'cors';
+import morgan from 'morgan';
 
-import { MONGODB_URI, MONGODB_DATABASE } from "./utils/secrets";
+import { connect } from '@utils/database';
 
-import authRouter from "./components/Auth/routes";
-import userRouter from "./components/User/routes";
-import postRouter from "./components/Post/routes";
-import voteRouter from "./components/Vote/routes";
-import messageRouter from "./components/Message/routes";
+import routes from './routes';
 
 const app = express();
 
-async function connect() {
-    try {
-        await mongoose.connect(`${MONGODB_URI}/${MONGODB_DATABASE}`, { useNewUrlParser: true });
-        console.log(`Connected to db: ${MONGODB_DATABASE}`);
-
-    } catch (error) {
-        console.log(error);
-        process.exit(1);
-    }
-}
-
+// Connect to database
 connect();
 
-app.use(morgan("dev"));
-app.use(helmet()); // Use Helmet to protect headers
+app.use(morgan('dev'));
+app.use(helmet());
 app.use(cors());
 app.use(bodyParser.json());
 
 // Enabling CORS Pre-Flight
-app.options("*", cors()); // include before other routes
+app.options('*', cors()); // include before other routes
 
-// Bind routers
-app.use(authRouter);
-app.use(userRouter);
-app.use(postRouter);
-app.use(voteRouter);
-app.use(messageRouter);
+// Bind routes
+app.use(routes);
 
 export default app;

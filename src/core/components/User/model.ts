@@ -1,5 +1,6 @@
-import bcrypt from 'bcrypt';
 import mongoose from 'mongoose';
+
+import { encryptionService } from '@core/services';
 
 const modelName = 'User';
 
@@ -9,7 +10,6 @@ type UserDocument = mongoose.Document & {
     firstname: string;
     lastname: string;
     position: string;
-    comparePassword: (plaintext: string) => boolean;
 };
 
 const attributes = {
@@ -41,14 +41,10 @@ const options = {};
 
 const UserSchema = new mongoose.Schema(attributes, options);
 
-UserSchema.methods.comparePassword = function (plaintext: string) {
-    return bcrypt.compareSync(plaintext, this.password);
-};
-
-// Hash password
+// Encrypt password
 UserSchema.pre<UserDocument>('save', function (next: mongoose.HookNextFunction) {
     if (this.isModified('password')) {
-        this.password = bcrypt.hashSync(this.password, 10);
+        this.password = encryptionService.encrypt(this.password);
     }
     next();
 });
