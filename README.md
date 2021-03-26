@@ -1,3 +1,3 @@
-# NodeIn backend
+# Node boilerplate
 
-This is the backend of NodeIn
+This project aims to provide a boilerplate developed following the best of best pratices when it comes to NodeJS.
