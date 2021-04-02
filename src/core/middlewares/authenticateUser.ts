@@ -1,26 +1,34 @@
 import { NextFunction, Request, Response } from 'express';
 
-import { ApiError } from '@core/models/errors';
-
+import { ApiError } from '@core/models/ApiError';
 import { jwtService, responseService } from '@core/services';
 
-import User from '@core/components/User/model';
+import { userService } from '@core/modules/User';
 
-export default async function authenticateUser(req: Request, res: Response, next: NextFunction) {
+export async function authenticateUser(
+    req: Request,
+    res: Response,
+    next: NextFunction
+): Promise<void> {
     try {
         const authorizationHeader = req.headers.authorization;
 
         if (!authorizationHeader || !authorizationHeader.split(' ').pop()) {
-            throw new ApiError('Missing authorization header', 400);
+            throw new ApiError(
+                responseService.HTTP_CODES.BAD_REQUEST,
+                'missing_authorization_header'
+            );
         }
 
         const decodedToken = jwtService.verify(authorizationHeader.split(' ').pop() as string);
 
-        req.authUser = await User.findById(decodedToken).lean().exec();
+        const authUser = await userService.findUser(decodedToken);
 
-        if (!req.authUser) {
-            throw new ApiError('Authentication failed', 403);
+        if (!authUser) {
+            throw new ApiError(responseService.HTTP_CODES.FORBIDDEN, 'authentication_failed');
         }
+
+        res.locals.authUser = authUser;
 
         next();
     } catch (error) {

@@ -2,7 +2,7 @@ import http from 'http';
 
 import app from './app';
 
-import { PORT } from './utils/secrets';
+const PORT = process.env.PORT;
 
 /**
  * Create HTTP server.
@@ -13,4 +13,4 @@ const server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 server.listen(PORT);
-console.log(`Listening on port: ${PORT}`);
+console.log(`INFO: Server listening on port ${PORT}`);

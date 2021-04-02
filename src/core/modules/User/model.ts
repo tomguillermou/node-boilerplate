@@ -2,15 +2,7 @@ import mongoose from 'mongoose';
 
 import { encryptionService } from '@core/services';
 
-const modelName = 'User';
-
-type UserDocument = mongoose.Document & {
-    email: string;
-    password: string;
-    firstname: string;
-    lastname: string;
-    position: string;
-};
+import { UserDocument } from './interfaces';
 
 const attributes = {
     email: {
@@ -49,6 +41,4 @@ UserSchema.pre<UserDocument>('save', function (next: mongoose.HookNextFunction) 
     next();
 });
 
-const UserModel = mongoose.model<UserDocument>(modelName, UserSchema);
-
-export default UserModel;
+export const UserModel = mongoose.model<UserDocument>('User', UserSchema);

@@ -1,27 +1,29 @@
-import bodyParser from 'body-parser';
 import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
 
-import { connect } from '@utils/database';
+import { dbUtils, secretUtils } from '@utils';
 
 import routes from './routes';
 
 const app = express();
 
+// Load secrets
+secretUtils.load();
+
 // Connect to database
-connect();
+dbUtils.connect();
 
 app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
 // Enabling CORS Pre-Flight
-app.options('*', cors()); // include before other routes
+// app.options('*', cors()); // include before other routes
 
-// Bind routes
+// Plug routes
 app.use(routes);
 
 export default app;

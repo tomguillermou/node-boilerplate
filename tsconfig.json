@@ -1,19 +1,25 @@
 {
     "compilerOptions": {
-        "outDir": "dist",
-        "baseUrl": "src",
-        "paths": {
-            "@components": ["components/*"],
-            "@config/*": ["config/*"],
-            "@core/*": ["core/*"],
-            "@utils/*": ["utils/*"]
-        },
+        // Project options
+        "outDir": "./dist",
         "target": "es6",
-        "module": "commonjs",
-        "esModuleInterop": true,
-        "resolveJsonModule": true,
         "sourceMap": true,
-        "strict": true
+
+        // Strict checks
+        "noImplicitAny": true,
+        "strict": true,
+
+        // Module resolution
+        "baseUrl": "./src",
+        "esModuleInterop": true,
+        "paths": {
+            "@core/*": ["./core/*"],
+            "@utils": ["./utils"]
+        },
+        "module": "commonjs",
+
+        // Advanced options
+        "skipLibCheck": true
     },
     "include": ["src/**/*"],
     "exclude": ["node_modules", "**/*.spec.ts"]

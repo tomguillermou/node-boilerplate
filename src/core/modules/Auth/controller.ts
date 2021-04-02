@@ -2,12 +2,11 @@ import { Request, Response } from 'express';
 
 import { responseService } from '@core/services';
 
-import { userService } from '@core/components/User';
+import { userService } from '@core/modules/User';
 
+//TODO: Remove class implementation
 export class AuthController {
-    constructor() {}
-
-    async login(req: Request, res: Response) {
+    async login(req: Request, res: Response): Promise<void> {
         try {
             const userToken = await userService.authenticateUser({
                 email: req.body.email,
@@ -20,7 +19,7 @@ export class AuthController {
         }
     }
 
-    async register(req: Request, res: Response) {
+    async register(req: Request, res: Response): Promise<void> {
         try {
             const userToken = await userService.createUser({
                 email: req.body.email,

@@ -1,16 +1,17 @@
 import mongoose from 'mongoose';
 
-import { MONGODB_URI, MONGODB_DATABASE } from './secrets';
+const MONGO_URI = process.env.MONGO_URI;
+const MONGO_DATABASE = process.env.MONGO_DATABASE;
 
 /**
  * Connect to MongoDB database.
  */
-export async function connect() {
+export async function connect(): Promise<void> {
     try {
-        await mongoose.connect(`${MONGODB_URI}/${MONGODB_DATABASE}`, {
+        await mongoose.connect(`${MONGO_URI}/${MONGO_DATABASE}`, {
             useNewUrlParser: true,
         });
-        console.log(`Connected to db: ${MONGODB_DATABASE}.`);
+        console.log(`INFO: Connected to db: ${MONGO_DATABASE}.`);
     } catch (error) {
         console.log(error);
         process.exit(1);
