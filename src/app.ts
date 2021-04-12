@@ -13,7 +13,13 @@ const app = express();
 secretUtils.load();
 
 // Connect to database
-dbUtils.connect();
+dbUtils.connect().then(
+  (databaseName) => console.log(`INFO: Connected to db: ${databaseName}.`),
+  (err) => {
+    console.log(err);
+    process.exit(1);
+  },
+);
 
 app.use(morgan('dev'));
 app.use(helmet());

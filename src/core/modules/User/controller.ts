@@ -2,10 +2,11 @@ import { Request, Response } from 'express';
 
 import { ApiError } from '@core/models';
 import { responseService } from '@core/services';
+import { UserDocument } from '@core/modules/User/interfaces';
 
 import * as userService from './service';
 
-export async function readMany(req: Request, res: Response): Promise<void> {
+export function readMany(req: Request, res: Response): void {
   try {
     throw new ApiError(
       responseService.HTTP_CODES.INTERNAL_SERVER_ERROR,
@@ -29,7 +30,7 @@ export async function readOne(req: Request, res: Response): Promise<void> {
 
 export async function fetchMe(req: Request, res: Response): Promise<void> {
   try {
-    const { authUser } = res.locals;
+    const authUser = res.locals.authUser as UserDocument;
     const user = await userService.findUser(authUser._id);
 
     responseService.sendJson(res, { user });

@@ -1,12 +1,13 @@
 import { NextFunction, Request, Response } from 'express';
 
 import { validationService, responseService } from '@core/services';
+import { User } from '../User/interfaces';
 
-export async function loginValidation(
+export function loginValidation(
   req: Request,
   res: Response,
   next: NextFunction,
-): Promise<void> {
+): void {
   try {
     // Nothing to validate
     next();
@@ -15,13 +16,14 @@ export async function loginValidation(
   }
 }
 
-export async function registerValidation(
+export function registerValidation(
   req: Request,
   res: Response,
   next: NextFunction,
-): Promise<void> {
+): void {
   try {
-    validationService.isValidEmail(req.body.email);
+    const user = req.body as User;
+    validationService.isValidEmail(user.email);
     // validationService.isValidPassword(req.body.password);
     next();
   } catch (error) {
