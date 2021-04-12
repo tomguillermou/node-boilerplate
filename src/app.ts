@@ -5,7 +5,7 @@ import morgan from 'morgan';
 
 import { dbUtils, secretUtils } from '@utils';
 
-import routes from './routes';
+import { router } from './routes';
 
 const app = express();
 
@@ -24,6 +24,6 @@ app.use(express.json());
 // app.options('*', cors()); // include before other routes
 
 // Plug routes
-app.use(routes);
+app.use(router);
 
-export default app;
+export { app };

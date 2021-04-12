@@ -3,7 +3,7 @@ import { isEmail, isMongoId } from 'validator';
 const EMAIL_DOMAIN = '@nodein.com';
 
 export function isValidEmail(email: string): boolean {
-    return isEmail(email) && email.includes(EMAIL_DOMAIN);
+  return isEmail(email) && email.includes(EMAIL_DOMAIN);
 }
 
 // export function isValidPassword(password: string): void {
@@ -14,5 +14,5 @@ export function isValidEmail(email: string): boolean {
 // }
 
 export function isValidId(id: string): boolean {
-    return isMongoId(id);
+  return isMongoId(id);
 }
