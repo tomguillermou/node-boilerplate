@@ -1,4 +1,4 @@
-export const environmentVariablesList: string[] = [
+export const SECRETS = [
     'ENVIRONMENT',
     'PORT',
     'MONGO_URI',
