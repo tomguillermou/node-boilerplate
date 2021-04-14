@@ -7,29 +7,27 @@ import { dbUtils, secretUtils } from '@utils';
 
 import { router } from './routes';
 
-const app = express();
+async function createApp(): Promise<express.Express> {
+  const app = express();
 
-// Load secrets
-secretUtils.load();
+  // Load secrets
+  secretUtils.load();
 
-// Connect to database
-dbUtils.connect().then(
-  (databaseName) => console.log(`INFO: Connected to db: ${databaseName}.`),
-  (err) => {
-    console.log(err);
-    process.exit(1);
-  },
-);
+  // Connect to database
+  await dbUtils.connect();
 
-app.use(morgan('dev'));
-app.use(helmet());
-app.use(cors());
-app.use(express.json());
+  app.use(morgan('dev'));
+  app.use(helmet());
+  app.use(cors());
+  app.use(express.json());
 
-// Enabling CORS Pre-Flight
-// app.options('*', cors()); // include before other routes
+  // Enabling CORS Pre-Flight
+  // app.options('*', cors()); // include before other routes
 
-// Plug routes
-app.use(router);
+  // Plug routes
+  app.use(router);
 
-export { app };
+  return app;
+}
+
+export { createApp };

@@ -5,10 +5,14 @@ const { MONGO_URI, MONGO_DATABASE } = process.env;
 /**
  * Connect to MongoDB database.
  */
-export async function connect(): Promise<string> {
-  await mongoose.connect(`${MONGO_URI}/${MONGO_DATABASE}`, {
-    useNewUrlParser: true,
-  });
-
-  return MONGO_DATABASE;
+export async function connect(): Promise<void> {
+  try {
+    await mongoose.connect(`${MONGO_URI}/${MONGO_DATABASE}`, {
+      useNewUrlParser: true,
+    });
+    console.log(`[log] Connected to db: ${MONGO_DATABASE}.`);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
 }
