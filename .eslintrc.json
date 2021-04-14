@@ -41,7 +41,7 @@
     "max-depth": ["error", 4],
     "max-nested-callbacks": ["error", 3],
     "max-params": ["error", 3],
-    "complexity": ["error", 5],
+    "complexity": ["error", 10],
 
     // Specify the file extension when importing only if not .ts
     "import/extensions": [
