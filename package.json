@@ -1,7 +1,7 @@
 {
-  "name": "nodein-backend",
+  "name": "node-boilerplate",
   "version": "1.0.0",
-  "description": "NodeIn backend",
+  "description": "Node boilerplate is an starter and an example of good practices for Node.js with Typescrypt",
   "scripts": {
     "start:dev": "nodemon -r tsconfig-paths/register src/server.ts",
     "lint": "eslint . --ext .ts",
