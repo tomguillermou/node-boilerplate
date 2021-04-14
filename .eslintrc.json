@@ -22,7 +22,26 @@
     }
   },
   "rules": {
+    "max-lines": [
+      "error",
+      {
+        "max": 150,
+        "skipBlankLines": true,
+        "skipComments": true
+      }
+    ],
+    "max-lines-per-function": [
+      "error",
+      {
+        "max": 25,
+        "skipBlankLines": true,
+        "skipComments": true
+      }
+    ],
     "max-depth": ["error", 4],
+    "max-nested-callbacks": ["error", 3],
+    "max-params": ["error", 3],
+    "complexity": ["error", 5],
 
     // Specify the file extension when importing only if not .ts
     "import/extensions": [
