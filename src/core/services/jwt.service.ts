@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import { ApiError } from '@core/models/ApiError';
 import { responseService, validationService } from '@core/services';
 
-const JWT_SECRET = process.env.JWT_SECRET as string;
+const { JWT_SECRET } = process.env;
 
 export function sign(payload: string): string {
   return jwt.sign(payload, JWT_SECRET);

@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 
-const SALT_ROUNDS = Number.parseInt(process.env.SALT_ROUNDS as string, 10);
+const SALT_ROUNDS = Number.parseInt(process.env.SALT_ROUNDS, 10);
 
 export function compareHash(plaintext: string, hash: string): boolean {
   return bcrypt.compareSync(plaintext, hash);

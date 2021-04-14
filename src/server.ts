@@ -2,7 +2,7 @@ import http from 'http';
 
 import { app } from './app';
 
-const { PORT = '3000' } = process.env;
+const { PORT } = process.env;
 
 /**
  * Create HTTP server.

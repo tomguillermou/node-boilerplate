@@ -12,7 +12,8 @@ export const HTTP_CODES = {
 };
 
 export function sendError(res: Response, error: Error | ApiError): void {
-  if (process.env.NODE_ENV === 'development') {
+  const { NODE_ENV } = process.env;
+  if (NODE_ENV === 'development') {
     console.error(error);
   }
 
