@@ -14,5 +14,5 @@ export async function connectToMongoDB(): Promise<void> {
         useCreateIndex: true,
     });
 
-    console.log(`[log] Connected to db: ${MONGO_DATABASE}.`);
+    console.log(`[log] Connected to db: ${MONGO_DATABASE}`);
 }
