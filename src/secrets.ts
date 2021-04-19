@@ -1,16 +1,14 @@
 import dotenv from 'dotenv';
 import fs from 'fs';
 
-import { ENV_FILE, SECRETS } from '@config';
+import { ENV_FILE, SECRETS } from '@config/configuration';
 
 const DEFAULT_ENV_FILE = '.env.example';
 
 /**
- * Load secrets from environment file.
- *
- * WARNING: This function must be called before anything else to guarantee secrets to be exposed properly to the entire app.
+ * Load secrets from the environment file.
  */
-export function loadSecrets(): void {
+function loadSecrets(): void {
     // Detect file to load secrets from
     const path = fs.existsSync(ENV_FILE) ? ENV_FILE : DEFAULT_ENV_FILE;
     console.log(`[log] Loading secrets from file: ${path}`);
@@ -32,3 +30,5 @@ export function loadSecrets(): void {
         process.exit(1);
     }
 }
+
+loadSecrets();

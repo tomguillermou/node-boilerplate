@@ -1,5 +1,4 @@
-import { loadSecrets } from './secrets';
-loadSecrets();
+import './secrets';
 
 import { connectToMongoDB } from './database';
 import { createHttpServer } from './server';

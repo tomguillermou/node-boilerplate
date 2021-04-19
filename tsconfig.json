@@ -13,9 +13,8 @@
         "baseUrl": "./src",
         "esModuleInterop": true,
         "paths": {
-            "@config": ["./config/configuration.ts"],
-            "@core/*": ["./core/*"],
-            "@utils": ["./utils"]
+            "@config/*": ["./config/*"],
+            "@core/*": ["./core/*"]
         },
         "module": "commonjs",
 

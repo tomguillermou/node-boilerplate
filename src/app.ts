@@ -3,7 +3,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
 
-import routes from './config/routes';
+import routes from '@config/routes';
 
 const app = express();
 app.use(morgan('dev'));
