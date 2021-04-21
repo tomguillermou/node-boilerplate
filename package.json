@@ -3,7 +3,9 @@
     "version": "1.0.0",
     "description": "NodeIn backend",
     "scripts": {
-        "start:dev": "nodemon -r tsconfig-paths/register src/main.ts",
+        "start": "node -r module-alias/register dist/main.js",
+        "start:dev": "nodemon --watch 'src/**' --ext 'ts,json' --ignore 'src/**/*.spec.ts' --exec 'ts-node -r tsconfig-paths/register src/main.ts'",
+        "build": "rm -rf dist && tsc",
         "lint": "eslint . --ext .ts",
         "test": "mocha --exit"
     },
@@ -12,6 +14,10 @@
     },
     "author": "",
     "license": "ISC",
+    "_moduleAliases": {
+        "@config": "dist/config",
+        "@core": "dist/core"
+    },
     "dependencies": {
         "bcrypt": "^5.0.1",
         "cors": "^2.8.5",
@@ -20,7 +26,8 @@
         "helmet": "^4.4.1",
         "jsonwebtoken": "^8.5.1",
         "lodash": "^4.17.21",
-        "mongoose": "^5.12.3",
+        "module-alias": "^2.2.2",
+        "mongoose": "^5.12.2",
         "morgan": "^1.10.0",
         "validator": "^13.5.2"
     },
