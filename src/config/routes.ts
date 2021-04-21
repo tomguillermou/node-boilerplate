@@ -5,6 +5,7 @@ import { userRoutes } from '@core/modules/User/routes';
 
 const router = Router();
 
+// Plug routes here
 router.use(authRoutes);
 router.use(userRoutes);
 

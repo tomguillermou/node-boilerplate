@@ -2,7 +2,7 @@
   "compilerOptions": {
     // Project options
     "outDir": "./dist",
-    "target": "es6",
+    "target": "ES6",
     "sourceMap": true,
 
     // Strict checks
@@ -10,14 +10,13 @@
     "strict": true,
 
     // Module resolution
-    "baseUrl": "./src",
+    "baseUrl": "src",
     "esModuleInterop": true,
     "paths": {
-      "@config": ["./config/configuration.ts"],
-      "@core/*": ["./core/*"],
-      "@utils": ["./utils"]
+      "@config/*": ["config/*"],
+      "@core/*": ["core/*"]
     },
-    "module": "commonjs",
+    "module": "CommonJS",
 
     // Advanced options
     "skipLibCheck": true
