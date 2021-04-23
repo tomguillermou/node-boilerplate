@@ -1,26 +1,26 @@
 {
-    "compilerOptions": {
-        // Project options
-        "outDir": "./dist",
-        "target": "ES6",
-        "sourceMap": true,
+  "compilerOptions": {
+    // Project options
+    "outDir": "./dist",
+    "target": "ES6",
+    "sourceMap": true,
 
-        // Strict checks
-        "noImplicitAny": true,
-        "strict": true,
+    // Strict checks
+    "noImplicitAny": true,
+    "strict": true,
 
-        // Module resolution
-        "baseUrl": "src",
-        "esModuleInterop": true,
-        "paths": {
-            "@config/*": ["config/*"],
-            "@core/*": ["core/*"]
-        },
-        "module": "CommonJS",
-
-        // Advanced options
-        "skipLibCheck": true
+    // Module resolution
+    "baseUrl": "src",
+    "esModuleInterop": true,
+    "paths": {
+      "@config/*": ["config/*"],
+      "@core/*": ["core/*"]
     },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules", "**/*.spec.ts"]
+    "module": "CommonJS",
+
+    // Advanced options
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }

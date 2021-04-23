@@ -1,9 +1,11 @@
 import { Router } from 'express';
-const router = Router();
 
-import { authValidation, authController } from '.';
+import { loginValidation, registerValidation } from './validation';
+import { login, register } from './controller';
 
-router.post('/auth/login', authValidation.login, authController.login);
-router.post('/auth/register', authValidation.register, authController.register);
+const authRoutes = Router();
 
-export default router;
+authRoutes.post('/auth/login', loginValidation, login);
+authRoutes.post('/auth/register', registerValidation, register);
+
+export { authRoutes };

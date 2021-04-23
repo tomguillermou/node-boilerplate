@@ -3,7 +3,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
 
-import routes from '@config/routes';
+import { router } from '@config/routes';
 
 const app = express();
 app.use(morgan('dev'));
@@ -15,6 +15,6 @@ app.use(express.json());
 // app.options('*', cors()); // include before other routes
 
 // Plug routes
-app.use(routes);
+app.use(router);
 
 export { app };
