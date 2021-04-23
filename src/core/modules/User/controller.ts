@@ -6,7 +6,7 @@ import { UserDocument } from '@core/modules/User/interfaces';
 
 import * as userService from './service';
 
-export function readMany(req: Request, res: Response): void {
+export function readManyUsers(req: Request, res: Response): void {
   try {
     throw new ApiError(
       responseService.HTTP_CODES.INTERNAL_SERVER_ERROR,
@@ -17,7 +17,7 @@ export function readMany(req: Request, res: Response): void {
   }
 }
 
-export async function readOne(req: Request, res: Response): Promise<void> {
+export async function readOneUser(req: Request, res: Response): Promise<void> {
   try {
     const { userId } = req.params;
     const user = await userService.findUser(userId);

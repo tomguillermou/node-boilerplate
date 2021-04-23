@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 import { ApiError } from '@core/models';
 import { validationService } from '@core/services';
 
-export function readMany(
+export function readManyUsersValidation(
   req: Request,
   res: Response,
   next: NextFunction,
@@ -14,7 +14,11 @@ export function readMany(
 
 // TODO: Pas suffisant il faut utiliser un middleware pour vérifier s'il y a une erreur
 // ou bien directement utiliser responseService.sendError();
-export function readOne(req: Request, res: Response, next: NextFunction): void {
+export function readOneUserValidation(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): void {
   if (!validationService.isValidId(req.params.id)) {
     throw new ApiError(400, 'invalid_user_id');
   }

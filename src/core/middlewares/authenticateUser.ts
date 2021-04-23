@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 import { ApiError } from '@core/models/ApiError';
 import { jwtService, responseService } from '@core/services';
 
-import { userService } from '@core/modules/User';
+import { findUser } from '@core/modules/User';
 
 const {
   HTTP_CODES: { BAD_REQUEST, FORBIDDEN },
@@ -45,7 +45,7 @@ export async function authenticateUser(
   try {
     const token = checkAuthorizationHeader(req.headers.authorization);
     const decodedToken = jwtService.verify(token);
-    const authUser = await userService.findUser(decodedToken);
+    const authUser = await findUser(decodedToken);
 
     if (!authUser) {
       throw new ApiError(FORBIDDEN, 'authentication_failed');

@@ -2,19 +2,15 @@ import { Router } from 'express';
 
 import { authenticateUser } from '@core/middlewares';
 
-import * as userController from './controller';
-import * as userValidation from './validation';
+import { fetchMe, readManyUsers, readOneUser } from './controller';
+import { readManyUsersValidation, readOneUserValidation } from './validation';
 
 const userRoutes = Router();
 
 userRoutes.use(authenticateUser);
 
-userRoutes.get('/users', userValidation.readMany, userController.readMany);
-userRoutes.get('/users/me', userController.fetchMe);
-userRoutes.get(
-  '/users/:userId',
-  userValidation.readOne,
-  userController.readOne,
-);
+userRoutes.get('/users', readManyUsersValidation, readManyUsers);
+userRoutes.get('/users/me', fetchMe);
+userRoutes.get('/users/:userId', readOneUserValidation, readOneUser);
 
 export { userRoutes };
