@@ -14,7 +14,7 @@ jobs:
           node-version: '14.x'
       - name: Install dependencies
         run: npm install
-      - name: Cehck lint
+      - name: Check lint
         run: npm run lint
       - name: Build
         run: npm run build
